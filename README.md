@@ -10,13 +10,13 @@ Além de ser um projeto técnico, ele também foi pensado de forma **didática**
 ---
 
 ##  Duas Versões do Projeto  
-- `src/` → versão **profissional**, enxuta, sem comentários didáticos. Ideal para mostrar boas práticas em entrevistas.  
+- `src/` → versão **profissional**, enxuta, sem comentários didáticos. Ideal para mostrar boas práticas em testes automatizados em sites.
 - `educacional/` → versão **didática**, com comentários passo a passo explicando a aplicação da **Page Object Model (POM)** e comparações com código “cru”.  
 
 ---
 
 ## 🎯 Objetivos do Projeto
-- **Profissional (src/):** apresentar código limpo, reutilizável e estruturado para recrutadores e empresas.  
+- **Profissional (src/):** apresentar código limpo, reutilizável e estruturado.  
 - **Educacional (educacional/):** servir como guia para iniciantes em QA, mostrando como o POM simplifica testes de automação.
 - Demonstrar a aplicação de **boas práticas de automação** com **Page Object Model (POM)**.  
 - Validar fluxos essenciais de um e-commerce: login, carrinho e finalização de compra.  
@@ -49,8 +49,8 @@ saucedemo-automation/
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/Pattussi/saucedemo-automation.git
-   cd saucedemo-automation
+   git clone https://github.com/Pattussi/saucedemo-automation-v2-education.git
+   cd saucedemo-automation-v2-education
    ```
 
 2. Crie e ative um ambiente virtual:
