@@ -34,3 +34,5 @@ class LoginPage(BasePage):
         # Valida o texto da mensagem de erro
         texto_encontrado = self.pegar_texto_elemento(self.error_login)
         assert texto_encontrado == texto_esperado, f"O texto encontrado foi '{texto_encontrado}', mas era esperado o texto '{texto_esperado}'."
+
+    
