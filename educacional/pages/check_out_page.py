@@ -15,7 +15,8 @@ class CheckOutPage(BasePage):
         self.postal_code_check_out = (By.ID, "postal-code")
         self.botao_continue_check_out = (By.XPATH, "//input[@class='btn_primary cart_button']")
         self.botao_finish = (By.XPATH, "//a[@class='btn_action cart_button']")
-       
+        self.check_out_message = (By.XPATH,"//*[@id='checkout_info_container']/div/form/h3")
+    
     def preencher_check_out(self, first_name, last_name, zip_code):
         # Preenche o formulário com os dados do cliente
         self.escrever(self.first_name_check_out, first_name)
@@ -26,3 +27,9 @@ class CheckOutPage(BasePage):
     def finalizar_compra(self):
         # Clica no botão "Finish" para concluir a compra
         self.clicar(self.botao_finish)
+    
+    def verificar_texto_error(self, texto_esperado):
+        # Valida se a mensagem de sucesso corresponde ao esperado
+        elemento = self.esperar_elemento_aparecer(self.check_out_message)
+        texto_encontrado = elemento.text.strip()
+        assert texto_encontrado == texto_esperado, (f"O texto encontrado foi '{texto_encontrado}', "f"mas era esperado o texto '{texto_esperado}'.")
