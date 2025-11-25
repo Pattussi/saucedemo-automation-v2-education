@@ -1,5 +1,4 @@
 import pytest
-import conftest
 from pages.login_page import LoginPage
 from pages.home_page import HomePage
 from pages.carrinho_page import CarrinhoPage
@@ -20,7 +19,7 @@ class TestCT01:
         carrinho_page = CarrinhoPage()
         check_out_page = CheckOutPage() 
         finish_page = FinishPage()
-        texto_esperado = "THANK YOU FOR YOUR ORDER"
+        texto_esperado = "Thank you for your order!"
 
         # ------------------- LOGIN -------------------
         login_page.fazer_login("standard_user", "secret_sauce")
@@ -89,4 +88,4 @@ class TestCT01:
 
         # --- Versão sem POM (antes) ---
         # conftest.driver.find_element(By.XPATH, "//a[@class='btn_action cart_button']").click()
-        # assert conftest.driver.find_element(By.XPATH,"//h2[@class='complete-header' and text()='THANK YOU FOR YOUR ORDER']").is_displayed()
+        # assert conftest.driver.find_element(By.XPATH,"//h2[@class='complete-header' and text()='Thank you for your order!']").is_displayed()

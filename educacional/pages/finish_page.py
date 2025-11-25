@@ -10,7 +10,7 @@ class FinishPage(BasePage):
     def __init__(self):
         self.driver = conftest.driver  
         # Localizador da mensagem de confirmação
-        self.finish_message = (By.XPATH,"//h2[@class='complete-header' and text()='THANK YOU FOR YOUR ORDER']")
+        self.finish_message = (By.XPATH,"//h2[@class='complete-header' and text()='Thank you for your order!']")
 
     def verificar_texto_compra_finalizada(self, texto_esperado):
         # Valida se a mensagem de sucesso corresponde ao esperado

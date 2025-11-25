@@ -17,7 +17,7 @@ class TestCT01:
         carrinho_page = CarrinhoPage()
         check_out_page = CheckOutPage() 
         finish_page = FinishPage()
-        texto_esperado = "THANK YOU FOR YOUR ORDER"
+        texto_esperado = "Thank you for your order!"
 
         login_page.fazer_login("standard_user", "secret_sauce")
 

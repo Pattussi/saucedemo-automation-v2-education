@@ -10,8 +10,9 @@ class CarrinhoPage(BasePage):
         self.driver = conftest.driver  
         # Localizadores
         self.item_inventario = (By.XPATH,"//div[@class='inventory_item_name' and text()='{}']")
-        self.botao_continuar_comprando = (By.XPATH, "//a[@class='btn_secondary']")
-        self.botao_check_out = (By.XPATH, "//a[@class='btn_action checkout_button']")
+        self.botao_continuar_comprando = (By.ID, "continue-shopping")
+        self.botao_check_out = (By.ID, "checkout")
+        self.botao_remover = (By.ID, "remove-sauce-labs-backpack")
     
     def verificar_produto_carrinho_existe(self, nome_item):
         # Verifica se um produto específico está no carrinho
@@ -25,3 +26,17 @@ class CarrinhoPage(BasePage):
     def clicar_botao_check_out(self):
         # Avança para a etapa de checkout
         self.clicar(self.botao_check_out)
+    
+    def remover_item_do_carrinho(self, nome_item):
+        item = (self.item_inventario[0], self.item_inventario[1].format(nome_item))
+        self.clicar(self.botao_remover)
+
+    def verificar_produto_nao_existe(self, nome_item):
+        item = (self.item_inventario[0], self.item_inventario[1].format(nome_item))
+        self.verificar_elemento_não_existe(item)
+
+    def obter_quantidade_itens(self):
+        itens = self.encontrar_elementos((By.CLASS_NAME, "inventory_item_name"))
+        return len(itens)
+    
+

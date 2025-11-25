@@ -10,6 +10,6 @@ def setup_teardown():
     driver = webdriver.Chrome()
     driver.implicitly_wait(3)
     driver.maximize_window()
-    driver.get("https://www.saucedemo.com/v1/")
+    driver.get("https://www.saucedemo.com")
     yield
     driver.quit()

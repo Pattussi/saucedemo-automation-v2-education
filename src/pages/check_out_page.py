@@ -9,8 +9,9 @@ class CheckOutPage(BasePage):
         self.first_name_check_out = (By.ID, "first-name")
         self.last_name_check_out = (By.ID, "last-name")
         self.postal_code_check_out = (By.ID, "postal-code")
-        self.botao_continue_check_out = (By.XPATH, "//input[@class='btn_primary cart_button']")
-        self.botao_finish = (By.XPATH, "//a[@class='btn_action cart_button']")
+        self.botao_continue_check_out = (By.ID, "continue")
+        self.botao_finish = (By.ID, "finish")
+        self.check_out_message = (By.XPATH,"//*[@class='error-message-container error']")
        
     def preencher_check_out(self, first_name, last_name, zip_code):
         self.escrever(self.first_name_check_out, first_name)
@@ -20,3 +21,8 @@ class CheckOutPage(BasePage):
 
     def finalizar_compra(self):
         self.clicar(self.botao_finish)
+    
+    def verificar_texto_error(self, texto_esperado):
+        elemento = self.esperar_elemento_aparecer(self.check_out_message)
+        texto_encontrado = elemento.text.strip()
+        assert texto_encontrado == texto_esperado, (f"O texto encontrado foi '{texto_encontrado}', "f"mas era esperado o texto '{texto_esperado}'.")

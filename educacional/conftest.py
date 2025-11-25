@@ -16,7 +16,7 @@ def setup_teardown():
     driver = webdriver.Chrome()
     driver.implicitly_wait(3) # espera implícita de 3s para todos os elementos
     driver.maximize_window()
-    driver.get("https://www.saucedemo.com/v1/") # site alvo
+    driver.get("https://www.saucedemo.com") # site alvo
 
     # "yield" entrega o controle para o teste rodar neste ponto
     yield

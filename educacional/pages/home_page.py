@@ -10,15 +10,16 @@ class HomePage(BasePage):
     def __init__(self):
         self.driver = conftest.driver
         # Localizadores dos elementos da página
-        self.titulo_pagina = (By.XPATH, "//div[@class='product_label']") 
-        self.intem_inventario = (By.XPATH,"//div[@class='inventory_item_name' and text()='{}']")
-        self.botao_adicionar_carrinho = (By.XPATH, "//*[text()='ADD TO CART']")
+        self.titulo_pagina = (By.XPATH, "//div[@class='app_logo']") 
+        self.item_inventario = (By.XPATH,"//div[contains(@class, 'inventory_item_name') and normalize-space(text())='{}']")
+        self.botao_adicionar_carrinho = (By.ID, "add-to-cart")
         self.icone_carriho = (By.XPATH, "//*[@class='shopping_cart_container']")
-        self.botao_menu = (By.XPATH, "//*[@id='menu_button_container']/div/div[3]/div/button")
+        self.botao_menu = (By.ID, "react-burger-menu-btn")
         self.botao_logout = (By.ID, 'logout_sidebar_link')
         self.botao_filtro = (By.CLASS_NAME, "product_sort_container")
         self.opcao_high_to_low = (By.XPATH, "//option[@value='hilo']")
         self.locator_precos = (By.CLASS_NAME, "inventory_item_price")
+        self.opcao_a_to_z = (By.XPATH, "//option[@value='az']")
        
     #//select[@class="product_sort_container"]
     def verificar_login_com_sucesso(self):
@@ -27,7 +28,7 @@ class HomePage(BasePage):
 
     def adicionar_ao_carrinho(self, nome_item):
         # Localiza o item pelo nome e adiciona ao carrinho
-        item = (self.intem_inventario[0], self.intem_inventario[1].format(nome_item))
+        item = (self.item_inventario[0], self.item_inventario[1].format(nome_item))
         self.clicar(item)
         self.clicar(self.botao_adicionar_carrinho)
 
@@ -53,6 +54,15 @@ class HomePage(BasePage):
         valores = self.obter_precos()
         return valores == sorted(valores, reverse=True)
         # Verifica se os preços estão em ordem decrescente
+    
+    def aplicar_filtro_ascendente(self):
+        self.clicar(self.botao_filtro)
+        self.clicar(self.opcao_a_to_z) # seleciona a opção "Name (A to Z)"
+
+    def produtos_em_ordem_ascendente(self):
+        nomes = [e.text for e in self.driver.find_elements(By.CLASS_NAME, "inventory_item_name")]
+        return nomes == sorted(nomes)
+
 
     
         
