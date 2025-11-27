@@ -8,7 +8,10 @@ from pages.check_out_page import CheckOutPage
 from pages.finish_page import FinishPage
 
 @pytest.mark.usefixtures("setup_teardown")
-@pytest.mark.carrinho 
+@pytest.mark.carrinho
+@pytest.mark.regressao
+@pytest.mark.fluxo_completo
+
 class TestCT01:
     def test_ct01_adicionar_produtos_carrinho(self):
         driver = conftest.driver

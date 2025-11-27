@@ -6,7 +6,10 @@ from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 
 @pytest.mark.usefixtures("setup_teardown")
+@pytest.mark.login
 @pytest.mark.logout
+@pytest.mark.regressao
+
 class TestCT04:
     def test_ct04_logout(self):
         login_page = LoginPage()
@@ -16,18 +19,21 @@ class TestCT04:
         # ------------------- LOGIN -------------------
         login_page.fazer_login("standard_user", "secret_sauce")
 
-        # ------------------- LOGOUT -------------------
-        # Faz logout usando o POM
-        home_page.fazer_logout()
-            
-        # Valida que voltou para tela de login
-        base_page.verificar_se_elemento_existe(login_page.login_button)
-        
-        # --- Versão sem POM (antes) ---
-        
+        # --- Versão sem POM ---
         # conftest.driver.find_element(By.ID, "user-name").send_keys("standard_user")
         # conftest.driver.find_element(By.ID, "password").send_keys("secret_sauce")
         # conftest.driver.find_element(By.ID, "login-button").click()
+
+        # ------------------- LOGOUT -------------------
+        home_page.fazer_logout()
+
+        # --- Versão sem POM ---
         # conftest.driver.find_element(By.ID, "react-burger-menu-btn").click()
-        # conftest.driver.find_element(By.ID, "logout_sidebar_link").click()
+        # conftest.driver.find_element(By.ID, 'logout_sidebar_link').click()    
+        
+        
+        # Valida que voltou para tela de login
+        base_page.verificar_se_elemento_existe(login_page.login_button)
+
+        # --- Versão sem POM ---
         # assert conftest.driver.find_element(By.ID, "login-button").is_displayed()

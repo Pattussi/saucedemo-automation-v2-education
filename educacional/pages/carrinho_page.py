@@ -28,14 +28,17 @@ class CarrinhoPage(BasePage):
         self.clicar(self.botao_check_out)
     
     def remover_item_do_carrinho(self, nome_item):
+        # Remove um item específico do carrinho
         item = (self.item_inventario[0], self.item_inventario[1].format(nome_item))
         self.clicar(self.botao_remover)
 
     def verificar_produto_nao_existe(self, nome_item):
+        # Verifica se um produto específico não está mais no carrinho
         item = (self.item_inventario[0], self.item_inventario[1].format(nome_item))
         self.verificar_elemento_não_existe(item)
 
     def obter_quantidade_itens(self):
+        # Retorna a quantidade de itens atualmente no carrinho
         itens = self.encontrar_elementos((By.CLASS_NAME, "inventory_item_name"))
         return len(itens)
     

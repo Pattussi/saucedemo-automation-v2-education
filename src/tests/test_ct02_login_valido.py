@@ -6,6 +6,8 @@ from pages.home_page import HomePage
 
 @pytest.mark.usefixtures("setup_teardown")
 @pytest.mark.login
+@pytest.mark.smoke
+
 class Testct02:
     def test_ct02_login_valido(self):
         

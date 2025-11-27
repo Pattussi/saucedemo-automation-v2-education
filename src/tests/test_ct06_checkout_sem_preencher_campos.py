@@ -8,7 +8,10 @@ from selenium.webdriver.common.by import By
 
 
 @pytest.mark.usefixtures("setup_teardown")
-@pytest.mark.carrinho 
+@pytest.mark.checkout
+@pytest.mark.negativo
+@pytest.mark.formulario
+
 class TestCT06:
     def test_ct06_checkout_sem_preencher_campos(self):
        

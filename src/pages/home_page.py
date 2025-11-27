@@ -16,6 +16,7 @@ class HomePage(BasePage):
         self.botao_filtro = (By.CLASS_NAME, "product_sort_container")
         self.opcao_high_to_low = (By.XPATH, "//option[@value='hilo']")
         self.locator_precos = (By.CLASS_NAME, "inventory_item_price")
+        self.opcao_a_to_z = (By.XPATH, "//option[@value='az']")
        
     
     def verificar_login_com_sucesso(self):
@@ -42,8 +43,15 @@ class HomePage(BasePage):
         elementos_precos = self.driver.find_elements(*self.locator_precos)    
         return [float(p.text.replace("$", "")) for p in elementos_precos] 
         
-    
     def precos_em_ordem_decrescente(self):
         valores = self.obter_precos()
         return valores == sorted(valores, reverse=True)
+    
+    def aplicar_filtro_ascendente(self):
+        self.clicar(self.botao_filtro)
+        self.clicar(self.opcao_a_to_z) 
+
+    def produtos_em_ordem_ascendente(self):
+        nomes = [e.text for e in self.driver.find_elements(By.CLASS_NAME, "inventory_item_name")]
+        return nomes == sorted(nomes)
         

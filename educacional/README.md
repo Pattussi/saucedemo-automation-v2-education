@@ -1,7 +1,13 @@
-# 🎓 Versão Educacional - Projeto SauceDemo
+# 🎓 Versão Educacional - Saucedemo-automation-v2-education
 
-Esta é a versão **didática** do projeto de automação.  
-Aqui o objetivo é mostrar de forma prática como o **Page Object Model (POM)** simplifica e organiza o código em comparação com o **Selenium cru**.
+A versão educacional foi criada para **ensinar automação de testes** usando Selenium + Python + Pytest + POM.
+
+Ela contém:
+
+- Explicações detalhadas  
+- Comparações entre **POM** e **Selenium puro**  
+- Testes comentados passo a passo  
+- Estrutura ideal para iniciantes  
 
 ---
 
@@ -18,7 +24,7 @@ Exemplo:
 # Com POM
 login_page.fazer_login("standard_user", "secret_sauce")
 
-# Sem POM (antes)
+# Sem POM 
 # driver.find_element(By.ID, "user-name").send_keys("standard_user")
 # driver.find_element(By.ID, "password").send_keys("secret_sauce")
 # driver.find_element(By.ID, "login-button").click()
@@ -27,13 +33,41 @@ login_page.fazer_login("standard_user", "secret_sauce")
 Essa comparação facilita para quem está aprendendo, mostrando o ganho de clareza, manutenção e reutilização de código com POM.
 
 ---
+## 🧪 Testes Explicados
 
-## 🏷️ Organização por marcas
+A versão educacional cobre os mesmos testes da versão profissional, porém com explicações:
 
-Todos os testes usam **marcas (pytest markers)** para facilitar a execução seletiva:
+- Login válido  
+- Login inválido  
+- Login bloqueado  
+- Fluxo de compra completo  
+- Remoção de itens  
+- Ordenação  
+- Campos obrigatórios  
+- Logout  
+- Validação de quantidade  
+- Ordenação A→Z  
+
+---
+
+## 🏷️ Marcadores Pytest
+
+Os mesmos da versão profissional:
+
+- login  (Testes relacionados ao login)
+- carrinho  (Ações no carrinho de compras)
+- checkout  (Testes de finalização/erro)
+- ordenacao  (Testes de filtros e ordenação)
+- negativo  (Cenários negativos)
+- smoke  (Testes rápidos para validação básica)
+- regressao  (Cenários essenciais da aplicação)
+- fluxo_completo  (Testes do início ao fim)
+
+
+Todos os testes usam **marcas (pytest markers)** para facilitar a execução seletiva, exemplo:
 
 - `@pytest.mark.login` → identifica testes de login.  
-- `@pytest.mark.carrinho` → identifica testes de carrinho/checkout.  
+- `@pytest.mark.carrinho` → identifica testes de carrinho.  
 
 Exemplos:
 
@@ -70,6 +104,23 @@ educacional/
 
 ---
 
+## 👨‍🏫 Para quem é esta versão?
+
+- Iniciantes em QA  
+- Pessoas em transição de carreira  
+- Mentores  
+- Estudantes  
+- Curiosos em automação  
+
+---
+
+Comece pelo teste mais completo:
+
+👉 `educacional/tests/test_ct01_adicionar_produtos_carrinho.py`
+
+Bom estudo! 🚀
+
+---
 ## ✅ Conclusão
 
 Essa versão educacional demonstra **o mesmo fluxo de testes de duas formas diferentes**:

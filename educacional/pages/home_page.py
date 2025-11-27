@@ -57,11 +57,13 @@ class HomePage(BasePage):
     
     def aplicar_filtro_ascendente(self):
         self.clicar(self.botao_filtro)
-        self.clicar(self.opcao_a_to_z) # seleciona a opção "Name (A to Z)"
-
+        self.clicar(self.opcao_a_to_z) 
+        # seleciona a opção "Name (A to Z)"
+        
     def produtos_em_ordem_ascendente(self):
         nomes = [e.text for e in self.driver.find_elements(By.CLASS_NAME, "inventory_item_name")]
         return nomes == sorted(nomes)
+        # Verifica se os nomes dos produtos estão em ordem alfabética crescente
 
 
     

@@ -1,79 +1,139 @@
-# Projeto de Automação de Testes – SauceDemo  
+# Projeto de Automação de Testes – saucedemo-automation-v2-education
 
 ## 📌 Sobre o Projeto  
 Este projeto foi desenvolvido como parte do meu portfólio após a conclusão do **Bootcamp de QA da TripleTen** e do curso de **Automação de Testes Web com Selenium WebDriver e Python**.  
 
-O objetivo é simular cenários de teste em um **e-commerce fictício (SauceDemo)**, cobrindo fluxos críticos como login, adição de produtos ao carrinho e checkout.  
+Ele simula cenários reais de teste em um **e-commerce fictício (SauceDemo)**, cobrindo fluxos essenciais como:
+
+- Login  
+- Ordenação de produtos  
+- Carrinho  
+- Checkout  
+- Finalização de compra  
+
+O projeto possui **duas versões**: uma profissional e uma educacional.
 
 Além de ser um projeto técnico, ele também foi pensado de forma **didática**, servindo como guia para QA’s iniciantes que desejam aprender automação com Selenium + Python.  
 
 ---
-
-##  Duas Versões do Projeto  
-- `src/` → versão **profissional**, enxuta, sem comentários didáticos. Ideal para mostrar boas práticas em testes automatizados em sites.
-- `educacional/` → versão **didática**, com comentários passo a passo explicando a aplicação da **Page Object Model (POM)** e comparações com código “cru”.  
-
----
-
 ## 🎯 Objetivos do Projeto
 - **Profissional (src/):** apresentar código limpo, reutilizável e estruturado.  
 - **Educacional (educacional/):** servir como guia para iniciantes em QA, mostrando como o POM simplifica testes de automação.
 - Demonstrar a aplicação de **boas práticas de automação** com **Page Object Model (POM)**.  
-- Validar fluxos essenciais de um e-commerce: login, carrinho e finalização de compra.  
+- Validar fluxos essenciais de um e-commerce.  
 - Fornecer uma base didática, mostrando através de comentários como seria o código “sem POM” e como pode ser otimizado.  
 
 ---
 
-## 📂 Estrutura do Projeto  
+## 🧭 Duas Versões do Projeto  
+
+### `src/` – Versão Profissional
+- Código limpo  
+- Estrutura enxuta  
+- Sem comentários didáticos  
+- Ideal para entrevistas e portfólio real  
+
+### `educacional/` – Versão Didática
+- Comentários passo a passo  
+- Comparações entre POM x Selenium puro  
+- Explicações sobre cada parte do código  
+
+---
+
+## 📂 Estrutura
 
 ```
-saucedemo-automation/
+saucedemo-automation-v2-education/
 │
-├── src/             # Versão profissional (enxuta e sem comentários)
-├── educacional/     # Versão didática (comentada, com exemplos de código cru)
-├── requirements.txt # Dependências
-├── .gitignore
+├── src/
+│   ├── pages/
+│   ├── tests/
+├── educacional/
+│   ├── pages/
+│   ├── tests/
+│   └── README.md/
+├── requirements.txt
+├── conftest.py
 └── README.md
 ```
----
-
-## ⚙️ Tecnologias Utilizadas  
-- **Linguagem:** Python 3  
-- **Framework de Teste:** Pytest  
-- **Automação Web:** Selenium WebDriver  
-- **IDE:** Visual Studio Code  
 
 ---
 
-## 🚀 Como Executar os Testes  
+## ⚙️ Tecnologias  
+- Python 3  
+- Selenium WebDriver  
+- Pytest  
+- VS Code  
 
-1. Clone este repositório:
-   ```bash
-   git clone https://github.com/Pattussi/saucedemo-automation-v2-education.git
-   cd saucedemo-automation-v2-education
-   ```
+---
 
-2. Crie e ative um ambiente virtual:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # Linux/Mac
-   venv\Scripts\activate      # Windows
-   ```
+## 🚀 Como Executar
 
-3. Instale as dependências:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### Instalação
+```bash
+git clone https://github.com/Pattussi/saucedemo-automation-v2-education.git
+cd saucedemo-automation-v2-education
+python -m venv venv
+venv\Scripts\activate   # Windows
+pip install -r requirements.txt
+```
 
-4. Execute os testes (versão profissional):
-   ```bash
-   pytest -v src/tests
-   ```
+### Executar testes
+**Profissional:**
+```bash
+pytest -v src/tests
+```
 
-5. Execute os testes (versão didática):
-   ```bash
-   pytest -v educacional/tests
-   ```
+**Educacional:**
+```bash
+pytest -v educacional/tests
+```
+
+---
+
+## 🧪 Casos de Teste (10 Testes)
+
+### Login
+- CT02 – Login válido  
+- CT03 – Login inválido  
+- CT10 – Login bloqueado  
+
+### Carrinho
+- CT01 – Fluxo completo  
+- CT07 – Remover item  
+- CT09 – Validar quantidade  
+
+### Checkout
+- CT06 – Campos obrigatórios vazios  
+
+### Ordenação
+- CT05 – Preço decrescente  
+- CT08 – Alfabético A→Z  
+
+### Sessão
+- CT04 – Logout  
+
+---
+
+## 🏷️ Marcadores Pytest
+
+| Marcador | Categoria |
+|---------|-----------|
+| login | Testes de login |
+| carrinho | Fluxos do carrinho |
+| checkout | Validações do checkout |
+| ordenacao | Ordenação de produtos |
+| negativo | Cenários negativos |
+| smoke | Testes rápidos |
+| regressao | Conjunto crítico |
+| fluxo_completo | Testes ponta-a-ponta |
+
+**Exemplos:**
+```bash
+pytest -m login
+pytest -m regressao
+pytest -m negativo
+```
 
 ---
 ## 🎓 Versão Educacional
@@ -85,43 +145,19 @@ A versão educacional mostra comparações entre:
 
 👉 Veja mais detalhes no [`educacional/README.md`](educacional/README.md).  
 
----
-## ✅ Casos de Teste Implementados  
-- **CT01 – Fluxo de compra completo**  
-   Login → Adição de produtos → Validação no carrinho → Checkout → Confirmação de pedido.  
-- **CT02 – Login válido**  
-   Verifica login com credenciais corretas.  
-- **CT03 – Login inválido**  
-   Valida mensagem de erro com credenciais incorretas.  
-
----
-
-## 🏷️ Marcas de Testes (pytest)
-
-Os testes utilizam **marcas** para organização e execução seletiva:
-
-- `@pytest.mark.login` → testes relacionados ao login.  
-- `@pytest.mark.carrinho` → testes relacionados ao carrinho/checkout.  
-
-Exemplos de execução:
-
-```bash
-# Rodar todos os testes
-pytest
-
-# Rodar apenas os testes de login
-pytest -m login
-
-# Rodar apenas os testes de carrinho
-pytest -m carrinho
-```
 
 ---
 
 ## 🔮 Possíveis Evoluções  
-- Integração de relatórios (Allure, pytest-html).  
-- Inclusão de mais cenários (ex.: login bloqueado, remoção de itens do carrinho, checkout vazio).  
-- Configuração de CI/CD com GitHub Actions para rodar os testes automaticamente.  
+- Relatórios Allure ou pytest-html
+
+- Integração com GitHub Actions (CI/CD)
+
+- Testes em múltiplos navegadores (Cross-browser)
+
+- Parâmetros de execução (usuários, itens etc.)
+
+- Inclusão de testes de API para complementar o ciclo QA
 
 ---
 

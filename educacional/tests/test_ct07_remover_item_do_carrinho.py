@@ -6,6 +6,8 @@ from selenium.webdriver.common.by import By
 
 @pytest.mark.usefixtures("setup_teardown")
 @pytest.mark.carrinho
+@pytest.mark.regressao
+
 class TestCT07:
     def test_ct07_remover_item_do_carrinho(self):
         login_page = LoginPage()
@@ -23,21 +25,24 @@ class TestCT07:
         # ------------------- ADICIONAR ITEM -------------------
         home_page.adicionar_ao_carrinho("Sauce Labs Backpack")
 
-        # --- Sem POM ---
-        # conftest.driver.find_element(By.XPATH, "//div[text()='Sauce Labs Backpack']").click()
-        # conftest.driver.find_element(By.XPATH, "//*[text()='ADD TO CART']").click()
+        # --- Versão sem POM ---
+        # conftest.driver.find_element(By.XPATH,"//div[contains(@class, 'inventory_item_name') and normalize-space(text())='Sauce Labs Backpack']").click()
+        # conftest.driver.find_element(By.ID, "add-to-cart").click()
 
         # ------------------- ACESSAR CARRINHO -------------------
         home_page.acessar_carrinho()
 
+        # --- Versão sem POM ---
+        # conftest.driver.find_element(By.XPATH, "//*[@class='shopping_cart_container']").click()
+
         # ------------------- REMOVER ITEM -------------------
         carrinho_page.remover_item_do_carrinho("Sauce Labs Backpack")
 
-        # --- Sem POM ---
-        # conftest.driver.find_element(By.XPATH, "//button[text()='REMOVE']").click()
+        # --- Versão sem POM ---
+        # conftest.driver.find_element(By.ID, "remove-sauce-labs-backpack").click()
 
         # ------------------- VALIDAR REMOÇÃO -------------------
         carrinho_page.verificar_produto_nao_existe("Sauce Labs Backpack")
 
-        # --- Versão sem POM (antes) ---
+        # --- Versão sem POM ---
         # assert len(conftest.driver.find_elements(By.XPATH,"//div[text()='Sauce Labs Backpack']")) == 0

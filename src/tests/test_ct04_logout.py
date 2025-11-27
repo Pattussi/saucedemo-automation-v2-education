@@ -6,7 +6,10 @@ from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 
 @pytest.mark.usefixtures("setup_teardown")
+@pytest.mark.login
 @pytest.mark.logout
+@pytest.mark.regressao
+
 class TestCT04:
     def test_ct04_logout(self):
         login_page = LoginPage()

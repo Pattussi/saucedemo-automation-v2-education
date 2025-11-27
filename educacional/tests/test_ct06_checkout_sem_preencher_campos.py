@@ -11,7 +11,10 @@ from selenium.webdriver.common.by import By
 # Login -> adicionar produtos -> validar carrinho -> checkout -> finalizar compra
 
 @pytest.mark.usefixtures("setup_teardown")
-@pytest.mark.carrinho 
+@pytest.mark.checkout
+@pytest.mark.negativo
+@pytest.mark.formulario
+
 class TestCT06:
     def test_ct06_checkout_sem_preencher_campos(self):
         # Criamos instâncias das páginas necessárias (POM)
@@ -24,39 +27,42 @@ class TestCT06:
         # ------------------- LOGIN -------------------
         login_page.fazer_login("standard_user", "secret_sauce")
 
-        # --- Versão sem POM (antes) ---
+        # --- Versão sem POM ---
         # conftest.driver.find_element(By.ID, "user-name").send_keys("standard_user")
         # conftest.driver.find_element(By.ID, "password").send_keys("secret_sauce")
         # conftest.driver.find_element(By.ID, "login-button").click()
 
         # ------------------- ADICIONAR 1º PRODUTO -------------------
         home_page.adicionar_ao_carrinho("Sauce Labs Backpack")
-
-        # --- Versão sem POM (antes) ---
-        # conftest.driver.find_element(By.XPATH,"//div[@class='inventory_item_name' and text()='Sauce Labs Backpack']").click()
-        # conftest.driver.find_element(By.XPATH, "//*[text()='ADD TO CART']").click()
+        
+        # --- Versão sem POM ---
+        # conftest.driver.find_element(By.XPATH,"//div[contains(@class, 'inventory_item_name') and normalize-space(text())='Sauce Labs Backpack']").click()
+        # conftest.driver.find_element(By.ID, "add-to-cart").click()
 
         # ------------------- VALIDAR PRODUTO NO CARRINHO -------------------
         home_page.acessar_carrinho()
         carrinho_page.verificar_produto_carrinho_existe("Sauce Labs Backpack")
 
-        # --- Versão sem POM (antes) ---
+        # --- Versão sem POM ---
         # conftest.driver.find_element(By.XPATH, "//*[@class='shopping_cart_container']").click()
-        # assert conftest.driver.find_element(By.XPATH,"//div[@class='inventory_item_name' and text()='Sauce Labs Backpack']").is_displayed()
+        # assert conftest.driver.find_element(By.XPATH,"//div[contains(@class, 'inventory_item_name') and normalize-space(text())='Sauce Labs Backpack']").is_displayed()
 
         # ------------------- CHECKOUT -------------------
         carrinho_page.clicar_botao_check_out()
         check_out_page.preencher_check_out("", "Pattussi", "12345")
        
-        # --- Versão sem POM (antes) ---
-        # conftest.driver.find_element(By.XPATH, "//a[@class='btn_action checkout_button']").click()
+        # --- Versão sem POM ---
+        # conftest.driver.find_element(By.ID, "checkout").click()
+        # conftest.driver.find_element(By.ID, "first-name").send_keys("")
         # conftest.driver.find_element(By.ID, "last-name").send_keys("Pattussi")
         # conftest.driver.find_element(By.ID, "postal-code").send_keys("12345")
-        # conftest.driver.find_element(By.XPATH, "//input[@class='btn_primary cart_button']").click()
+        # conftest.driver.find_element(By.ID, "continue").click()
 
         # # ------------------- VALIDAR MENSAGEM DE ERRO -------------------
         check_out_page.verificar_texto_error(texto_esperado)
-        # # assert conftest.driver.find_element(By.XPATH,"//*[@id='checkout_info_container'/div/form/h3 and text()='Error: First Name is required']").is_displayed()
+
+        # --- Versão sem POM ---
+        # # assert conftest.driver.find_element(By.XPATH,"//*[@class='error-message-container error']").is_displayed()
 
 
        

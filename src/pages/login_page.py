@@ -12,7 +12,6 @@ class LoginPage(BasePage):
         self.error_login = (By.XPATH, "//h3[@data-test='error']")
 
 
-
     def fazer_login(self, usuario, senha): 
         self.escrever(self.username_field, usuario)
         self.escrever(self.password_field, senha)

@@ -9,6 +9,7 @@ from selenium.webdriver.common.by import By
 
 @pytest.mark.usefixtures("setup_teardown")
 @pytest.mark.login
+@pytest.mark.smoke
 class Testct02:
     def test_ct02_login_valido(self):
         # Instancia as páginas necessárias
@@ -18,7 +19,7 @@ class Testct02:
         # ------------------- LOGIN -------------------
         login_page.fazer_login("standard_user", "secret_sauce")
 
-        # --- Versão sem POM (antes) ---
+        # --- Versão sem POM ---
         # conftest.driver.find_element(By.ID, "user-name").send_keys("standard_user")
         # conftest.driver.find_element(By.ID, "password").send_keys("secret_sauce")
         # conftest.driver.find_element(By.ID, "login-button").click()
@@ -26,5 +27,5 @@ class Testct02:
         # ------------------- VALIDAÇÃO -------------------
         home_page.verificar_login_com_sucesso()
 
-        # --- Versão sem POM (antes) ---
-        # assert conftest.driver.find_element(By.XPATH, "//div[@class='product_label']").is_displayed()
+        # --- Versão sem POM ---
+        # assert conftest.driver.find_element(By.XPATH, "//div[@class='app_logo']").is_displayed()
