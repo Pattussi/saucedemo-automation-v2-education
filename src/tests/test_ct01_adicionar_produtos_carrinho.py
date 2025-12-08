@@ -11,15 +11,16 @@ from pages.finish_page import FinishPage
 @pytest.mark.carrinho
 @pytest.mark.regressao
 @pytest.mark.fluxo_completo
-
 class TestCT01:
     def test_ct01_adicionar_produtos_carrinho(self):
         driver = conftest.driver
-        login_page = LoginPage()
-        home_page = HomePage()
-        carrinho_page = CarrinhoPage()
-        check_out_page = CheckOutPage() 
-        finish_page = FinishPage()
+        
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
+        carrinho_page = CarrinhoPage(driver)
+        check_out_page = CheckOutPage(driver)
+        finish_page = FinishPage(driver)
+
         texto_esperado = "Thank you for your order!"
 
         login_page.fazer_login("standard_user", "secret_sauce")
@@ -45,4 +46,5 @@ class TestCT01:
         carrinho_page.verificar_produto_carrinho_existe("Sauce Labs Bike Light")
 
         check_out_page.finalizar_compra()
+
         finish_page.verificar_texto_compra_finalizada(texto_esperado)

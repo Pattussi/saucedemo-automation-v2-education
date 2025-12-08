@@ -1,4 +1,5 @@
 import pytest
+import conftest
 from pages.login_page import LoginPage
 from pages.home_page import HomePage
 from pages.carrinho_page import CarrinhoPage
@@ -11,9 +12,10 @@ from pages.carrinho_page import CarrinhoPage
 
 class TestCT09:
     def test_ct09_validar_quantidade_itens_no_carrinho(self):
-        login_page = LoginPage()
-        home_page = HomePage()
-        carrinho_page = CarrinhoPage()
+        driver = conftest.driver
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
+        carrinho_page = CarrinhoPage(driver)
 
 
         login_page.fazer_login("standard_user", "secret_sauce")

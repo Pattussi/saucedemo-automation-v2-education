@@ -7,8 +7,9 @@ from pages.base_page import BasePage
 
 class CheckOutPage(BasePage):
 
-    def __init__(self):
-        self.driver = conftest.driver  
+    def __init__(self, driver):
+        super().__init__(driver)
+         
         # Localizadores dos campos do formulário
         self.first_name_check_out = (By.ID, "first-name")
         self.last_name_check_out = (By.ID, "last-name")

@@ -6,8 +6,8 @@ from pages.base_page import BasePage
 
 class CarrinhoPage(BasePage):
 
-    def __init__(self):
-        self.driver = conftest.driver  
+    def __init__(self, driver):
+        super().__init__(driver) 
         # Localizadores
         self.item_inventario = (By.XPATH,"//div[@class='inventory_item_name' and text()='{}']")
         self.botao_continuar_comprando = (By.ID, "continue-shopping")

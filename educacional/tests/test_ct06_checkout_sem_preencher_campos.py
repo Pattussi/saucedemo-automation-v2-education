@@ -17,11 +17,12 @@ from selenium.webdriver.common.by import By
 
 class TestCT06:
     def test_ct06_checkout_sem_preencher_campos(self):
+        driver = conftest.driver
         # Criamos instâncias das páginas necessárias (POM)
-        login_page = LoginPage()
-        home_page = HomePage()
-        carrinho_page = CarrinhoPage()
-        check_out_page = CheckOutPage() 
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
+        carrinho_page = CarrinhoPage(driver)
+        check_out_page = CheckOutPage(driver) 
         texto_esperado = "Error: First Name is required"
 
         # ------------------- LOGIN -------------------

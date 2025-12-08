@@ -9,9 +9,9 @@ from selenium.webdriver import ActionChains, Keys
 # Isso evita repetição de código em cada página específica.
 
 class BasePage:
-    def __init__(self):
+    def __init__(self, driver):
         # O driver é compartilhado através do conftest
-        self.driver = conftest.driver
+        self.driver = driver
 
     def encontrar_elemento(self, locator):
         # Localiza UM elemento usando o locator (tupla By, valor)
@@ -67,3 +67,4 @@ class BasePage:
             elem.send_keys(Keys.ENTER)
         elif key == "ESPACO":
             elem.send_keys(Keys.SPACE)
+        # Adicionar outras teclas conforme necessário

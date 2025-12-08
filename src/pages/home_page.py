@@ -1,12 +1,11 @@
-from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
-import conftest
+from pages.base_page import BasePage
 
+class HomePage(BasePage):
 
-class HomePage(BasePage): 
-        
-    def __init__(self):
-        self.driver = conftest.driver
+    def __init__(self, driver):
+        super().__init__(driver)
+
         self.titulo_pagina = (By.XPATH, "//div[@class='app_logo']") 
         self.item_inventario = (By.XPATH,"//div[contains(@class, 'inventory_item_name') and normalize-space(text())='{}']")
         self.botao_adicionar_carrinho = (By.ID, "add-to-cart")

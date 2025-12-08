@@ -7,8 +7,8 @@ from pages.base_page import BasePage
 
 class LoginPage(BasePage):
 
-    def __init__(self):
-        self.driver = conftest.driver  
+    def __init__(self, driver):
+        super().__init__(driver)
         # Localizadores dos elementos da tela
         self.username_field = (By.ID, "user-name")
         self.password_field = (By.ID, "password")

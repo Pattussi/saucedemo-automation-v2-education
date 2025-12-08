@@ -1,4 +1,5 @@
 import pytest
+import conftest
 from pages.login_page import LoginPage
 from pages.home_page import HomePage
 from pages.carrinho_page import CarrinhoPage
@@ -10,9 +11,10 @@ from selenium.webdriver.common.by import By
 
 class TestCT07:
     def test_ct07_remover_item_do_carrinho(self):
-        login_page = LoginPage()
-        home_page = HomePage()
-        carrinho_page = CarrinhoPage()
+        driver = conftest.driver
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
+        carrinho_page = CarrinhoPage(driver)
 
         # ------------------- LOGIN -------------------
         login_page.fazer_login("standard_user", "secret_sauce")

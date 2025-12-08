@@ -10,8 +10,9 @@ from selenium.webdriver.common.by import By
 
 class TestCT05:
     def test_ct05_ordenacao_produtos_preco(self):
-        login_page = LoginPage()
-        home_page = HomePage()
+        driver = conftest.driver
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
         
         login_page.fazer_login("standard_user", "secret_sauce")
 

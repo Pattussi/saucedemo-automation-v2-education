@@ -1,11 +1,13 @@
-import conftest
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 
 class FinishPage(BasePage):
 
-    def __init__(self):
-        self.driver = conftest.driver  
+    mensagem_sucesso = (By.XPATH, "//h2[@class='complete-header']")
+
+    def __init__(self, driver):
+        super().__init__(driver)
+
         self.finish_message = (By.XPATH,"//h2[@class='complete-header' and text()='Thank you for your order!']")
 
     def verificar_texto_compra_finalizada(self, texto_esperado):

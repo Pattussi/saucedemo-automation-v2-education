@@ -7,8 +7,8 @@ import conftest
 
 class HomePage(BasePage): 
         
-    def __init__(self):
-        self.driver = conftest.driver
+    def __init__(self, driver):
+        super().__init__(driver)
         # Localizadores dos elementos da página
         self.titulo_pagina = (By.XPATH, "//div[@class='app_logo']") 
         self.item_inventario = (By.XPATH,"//div[contains(@class, 'inventory_item_name') and normalize-space(text())='{}']")

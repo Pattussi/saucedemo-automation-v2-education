@@ -13,8 +13,9 @@ from selenium.webdriver.common.by import By
 class Testct02:
     def test_ct02_login_valido(self):
         # Instancia as páginas necessárias
-        login_page = LoginPage()
-        home_page = HomePage()
+        driver = conftest.driver
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
         
         # ------------------- LOGIN -------------------
         login_page.fazer_login("standard_user", "secret_sauce")

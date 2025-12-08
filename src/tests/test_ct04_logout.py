@@ -12,9 +12,10 @@ from selenium.webdriver.common.by import By
 
 class TestCT04:
     def test_ct04_logout(self):
-        login_page = LoginPage()
-        home_page = HomePage()
-        base_page = BasePage()  
+        driver = conftest.driver
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
+        base_page = BasePage(driver)  
         
 
         login_page.fazer_login("standard_user", "secret_sauce")

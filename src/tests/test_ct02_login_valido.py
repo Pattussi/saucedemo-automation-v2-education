@@ -10,10 +10,11 @@ from pages.home_page import HomePage
 
 class Testct02:
     def test_ct02_login_valido(self):
-        
         driver = conftest.driver
-        login_page = LoginPage()
-        home_page = HomePage()
+        
+        
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
         
         login_page.fazer_login("standard_user", "secret_sauce")
         

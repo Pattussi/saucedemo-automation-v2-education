@@ -1,10 +1,11 @@
 import pytest
+from selenium.webdriver.common.by import By
+import conftest
 from pages.login_page import LoginPage
 from pages.home_page import HomePage
 from pages.carrinho_page import CarrinhoPage
 from pages.check_out_page import CheckOutPage
 from pages.finish_page import FinishPage
-from selenium.webdriver.common.by import By
 
 # Este teste cobre o fluxo completo de compra:
 # Login -> adicionar produtos -> validar carrinho -> checkout -> finalizar compra
@@ -17,11 +18,12 @@ from selenium.webdriver.common.by import By
 class TestCT01:
     def test_ct01_adicionar_produtos_carrinho(self):
         # Criamos instâncias das páginas necessárias (POM)
-        login_page = LoginPage()
-        home_page = HomePage()
-        carrinho_page = CarrinhoPage()
-        check_out_page = CheckOutPage() 
-        finish_page = FinishPage()
+        driver = conftest.driver
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
+        carrinho_page = CarrinhoPage(driver)
+        check_out_page = CheckOutPage(driver) 
+        finish_page = FinishPage(driver)
         texto_esperado = "Thank you for your order!"
 
         # ------------------- LOGIN -------------------

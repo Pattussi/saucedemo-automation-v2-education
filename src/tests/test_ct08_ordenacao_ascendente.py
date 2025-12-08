@@ -1,4 +1,5 @@
 import pytest
+import conftest
 from pages.login_page import LoginPage
 from pages.home_page import HomePage
 from selenium.webdriver.common.by import By
@@ -10,8 +11,10 @@ from selenium.webdriver.common.by import By
 
 class TestCT08:
     def test_ct08_ordenacao_ascendente(self):
-        login_page = LoginPage()
-        home_page = HomePage()
+
+        driver = conftest.driver
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
 
 
         login_page.fazer_login("standard_user", "secret_sauce")

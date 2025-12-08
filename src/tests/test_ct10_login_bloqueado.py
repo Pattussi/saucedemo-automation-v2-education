@@ -1,4 +1,5 @@
 import pytest
+import conftest
 from pages.login_page import LoginPage
 from selenium.webdriver.common.by import By
 
@@ -9,7 +10,8 @@ from selenium.webdriver.common.by import By
 
 class TestCT10:
     def test_ct10_login_bloqueado(self):
-        login_page = LoginPage()
+        driver = conftest.driver
+        login_page = LoginPage(driver)
         mensagem_esperada = "Epic sadface: Sorry, this user has been locked out."
 
  

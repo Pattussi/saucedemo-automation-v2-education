@@ -7,8 +7,8 @@ from pages.base_page import BasePage
 
 class FinishPage(BasePage):
 
-    def __init__(self):
-        self.driver = conftest.driver  
+    def __init__(self, driver):
+        super().__init__(driver)
         # Localizador da mensagem de confirmação
         self.finish_message = (By.XPATH,"//h2[@class='complete-header' and text()='Thank you for your order!']")
 

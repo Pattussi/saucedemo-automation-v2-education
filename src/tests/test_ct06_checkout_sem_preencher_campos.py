@@ -1,5 +1,5 @@
 import pytest
-import conftest
+import conftest 
 from pages.login_page import LoginPage
 from pages.home_page import HomePage
 from pages.carrinho_page import CarrinhoPage
@@ -14,11 +14,11 @@ from selenium.webdriver.common.by import By
 
 class TestCT06:
     def test_ct06_checkout_sem_preencher_campos(self):
-       
-        login_page = LoginPage()
-        home_page = HomePage()
-        carrinho_page = CarrinhoPage()
-        check_out_page = CheckOutPage() 
+        driver = conftest.driver
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
+        carrinho_page = CarrinhoPage(driver)
+        check_out_page = CheckOutPage(driver) 
         texto_esperado = "Error: First Name is required"
 
  

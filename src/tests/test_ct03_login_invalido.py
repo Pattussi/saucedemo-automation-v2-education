@@ -9,10 +9,11 @@ from pages.login_page import LoginPage
 
 class TestCT03:
     def test_ct03_login_invalido(self):
+        driver = conftest.driver
+        
         mensagem_de_erro_esperada = "Epic sadface: Username and password do not match any user in this service"
         
-        driver = conftest.driver
-        login_page = LoginPage()
+        login_page = LoginPage(driver)
         
         login_page.fazer_login("standard_user", "12345678")
 

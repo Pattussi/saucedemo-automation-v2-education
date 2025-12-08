@@ -1,4 +1,5 @@
 import pytest
+import conftest
 from pages.login_page import LoginPage
 from pages.home_page import HomePage
 from selenium.webdriver.common.by import By
@@ -9,8 +10,9 @@ from selenium.webdriver.common.by import By
 
 class TestCT05:
     def test_ct05_ordenacao_produtos_preco(self):
-        login_page = LoginPage()
-        home_page = HomePage()
+        driver = conftest.driver
+        login_page = LoginPage(driver)
+        home_page = HomePage(driver)
 
         # ------------------- LOGIN -------------------
         login_page.fazer_login("standard_user", "secret_sauce")
@@ -30,6 +32,7 @@ class TestCT05:
         # ------------------- CAPTURAR LISTA DE PREÇOS -------------------
         # Aqui o método da HomePage já retorna os preços como números (floats)
         # e internamente aplica a lógica de comparação para validar a ordenação.
+        
         assert home_page.precos_em_ordem_decrescente(), (
             "Os preços não estão ordenados corretamente do maior para o menor."
         )
